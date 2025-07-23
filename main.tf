@@ -5,13 +5,6 @@ terraform {
       version = "4.37.0"
     }
   }
-  # backend "azurerm" {
-  #   resource_group_name  = "vivek-rg"
-  #   storage_account_name = "vivekstorageac"
-  #   container_name       = "vivekcontainer"
-  #   key                  = "terraform.tfstate"
-    
-  # }
 }
 provider "azurerm" {
   features {}
