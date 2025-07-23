@@ -23,3 +23,9 @@ resource "azurerm_storage_account" "storage_account" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
+
+resource "azurerm_storage_container" "storage_container" {
+  name                  = "vivekcontainer"
+  storage_account_name  = "vivekstorageac"
+  container_access_type = "private"
+}
