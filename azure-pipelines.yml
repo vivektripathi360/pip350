@@ -18,3 +18,19 @@ steps:
         templateLocation: 'Linked artifact'
         csmFile: 'nothing'
         deploymentMode: 'Incremental'
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)pip350'
+    backendServiceArm: 'connect'
+    backendAzureRmResourceGroupName: 'vivek-rg'
+    backendAzureRmStorageAccountName: 'vivekstorageac'
+    backendAzureRmContainerName: 'vivekcontainer'
+    backendAzureRmKey: 'terraform.tfstate'
+
+    - task: TerraformTask@5
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        environmentServiceNameAzureRM: 'connect'
