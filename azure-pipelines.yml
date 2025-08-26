@@ -30,10 +30,3 @@ steps:
     backendAzureRmContainerName: 'vivekstorageac'
     backendAzureRmKey: 'terraform.tfstate'
 
-    
-
-- task: TerraformTask@5
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    environmentServiceNameAzureRM: 'connect'
