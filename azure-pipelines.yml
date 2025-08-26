@@ -7,30 +7,31 @@ steps:
   inputs:
     terraformVersion: 'latest'
 
-    - task: AzureResourceManagerTemplateDeployment@3
-      inputs:
-        deploymentScope: 'Resource Group'
-        azureResourceManagerConnection: 'connect'
-        subscriptionId: 'f0c6c28a-7429-42b3-aefa-63439e20a651'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'vivek'
-        location: 'Central India'
-        templateLocation: 'Linked artifact'
-        csmFile: 'nothing'
-        deploymentMode: 'Incremental'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'connect'
+    subscriptionId: 'f0c6c28a-7429-42b3-aefa-63439e20a651'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'vivek'
+    location: 'Central India'
+    templateLocation: 'Linked artifact'
+    csmFile: 'nothing'
+    deploymentMode: 'Incremental'
+
 - task: TerraformTask@5
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)pip350'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/pip350'
     backendServiceArm: 'connect'
     backendAzureRmResourceGroupName: 'vivek-rg'
     backendAzureRmStorageAccountName: 'vivekstorageac'
     backendAzureRmContainerName: 'vivekcontainer'
     backendAzureRmKey: 'terraform.tfstate'
 
-    - task: TerraformTask@5
-      inputs:
-        provider: 'azurerm'
-        command: 'apply'
-        environmentServiceNameAzureRM: 'connect'
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'connect'
