@@ -23,7 +23,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/vivektripathi360/pip350'
     backendServiceArm: 'connect'
     backendAzureRmResourceGroupName: 'vivek-rg'
     backendAzureRmStorageAccountName: 'vivekstorageac'
